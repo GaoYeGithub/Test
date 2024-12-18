@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Tote Bag Showcase</title>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div id="info">
+        <h3>Tote Bag Showcase</h3>
+        <p>Click and drag to rotate. Scroll to zoom in/out.</p>
+    </div>
+    <a-scene>
+        <a-sky color="#000000"></a-sky>
+
+        <a-entity position="0 1.5 4">
+            <a-camera look-controls orbit-controls="target: 0 1.5 0; minDistance: 2; maxDistance: 8"></a-camera>
+        </a-entity>
+
+        <a-light type="ambient" intensity="0.3" color="#ffffff"></a-light>
+        <a-light type="directional" position="-2 4 5" intensity="0.8" color="#ffffff" 
+                shadow="cast: true"></a-light>
+        <a-light type="spot" position="2 4 3" intensity="0.6" color="#ffffff" 
+                angle="45" penumbra="0.8" shadow="cast: true"></a-light>
+
+        <a-plane position="0 0 0" 
+                 rotation="-90 0 0" 
+                 width="20" 
+                 height="20" 
+                 color="#000000" 
+                 material="roughness: 0.3; metalness: 0.2"
+                 shadow="receive: true"></a-plane>
+
+        <a-entity position="0 1.5 0" scale="3 3 3">
+            <a-obj-model src="assets/totebag.obj"
+                        material="assets/texture.png; repeat: 1 1; roughness: 0.4; metalness: 0.1"
+                        shadow="cast: true">
+                <a-animation attribute="rotation"
+                           dur="8000"
+                           to="0 360 0"
+                           repeat="indefinite"
+                           easing="linear"></a-animation>
+            </a-obj-model>
+        </a-entity>
+    </a-scene>
+</body>
+</html>
