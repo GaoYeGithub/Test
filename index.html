@@ -9,6 +9,7 @@
         body {
             margin: 0;
             overflow: hidden;
+            font-family: Arial, sans-serif;
         }
         #info {
             position: absolute;
@@ -18,8 +19,24 @@
             color: white;
             padding: 10px;
             border-radius: 5px;
-            font-family: Arial, sans-serif;
             z-index: 1000;
+        }
+        #form-container {
+            position: absolute;
+            top: 20%;
+            right: 10px;
+            width: 640px;
+            height: 792px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            overflow: auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        #form-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
     </style>
 </head>
@@ -28,6 +45,12 @@
         <h3>Tote Bag Showcase</h3>
         <p>Click and drag to rotate. Scroll to zoom in/out.</p>
     </div>
+
+    <div id="form-container">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd0cZ5Zk2BBzHPmdAqXJMyskc0CG6TTYSbHqxOX6Y9AdJJzzw/viewform?embedded=true"
+                frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </div>
+
     <a-scene>
         <a-sky color="#000000"></a-sky>
 
@@ -51,7 +74,7 @@
 
         <a-entity position="0 1.5 0" scale="3 3 3">
             <a-obj-model src="assets/totebag.obj"
-                        material="assets/texture.png; repeat: 1 1; roughness: 0.4; metalness: 0.1"
+                        material="src: url(assets/texture.png); roughness: 0.4; metalness: 0.1"
                         shadow="cast: true">
                 <a-animation attribute="rotation"
                            dur="8000"
